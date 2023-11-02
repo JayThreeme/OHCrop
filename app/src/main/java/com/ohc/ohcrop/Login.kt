@@ -17,16 +17,18 @@ class Login : AppCompatActivity() {
 
         val loginBtn = findViewById<Button>(R.id.LoginBtn)
         loginBtn.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
             Toast.makeText(applicationContext,"Login Success!", Toast.LENGTH_SHORT).show()
         }
 
-        val register = findViewById<TextView>(R.id.LoginSignupText)
+        val register = findViewById<Button>(R.id.LoginRegisterBtn)
         register.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
             Toast.makeText(applicationContext,"Register!", Toast.LENGTH_SHORT).show()
         }
+
+
     }
 }
