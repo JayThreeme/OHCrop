@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.inputmethod.InputBinding
 import android.widget.Button
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -18,6 +19,7 @@ import com.ohc.ohcrop.databinding.ActivityTestBinding
 
 class Test : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var binding: ActivityTestBinding
     private lateinit var database: DatabaseReference

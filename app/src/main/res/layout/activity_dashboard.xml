@@ -17,24 +17,48 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imageBtnBack"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:background="@color/transparent"
             android:src="@drawable/baseline_arrow_back_24"
-            android:layout_marginTop="30dp"/>
+            android:visibility="invisible"/>
 
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="270dp"
+        <LinearLayout
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ohcroplogo" />
+            android:orientation="vertical"
+            android:layout_margin="0dp"
+            android:padding="0dp">
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ohcroplogo"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dashboard"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="@color/textcolor_violet"
+                android:layout_marginTop="15dp"/>
+
+        </LinearLayout>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/imageBtnProfile"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
@@ -47,20 +71,20 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:padding="10dp"
+        android:padding="5dp"
         android:elevation="2dp">
 
         <Button
             android:id="@+id/dashboardMonitorBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="3dp"
             android:layout_weight="1"
             android:background="@drawable/dashboard_button_menu_style"
             android:drawableTop="@drawable/baseline_monitor_50"
@@ -68,41 +92,58 @@
             android:padding="15dp"
             android:text="Monitor"
             android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <Button
             android:id="@+id/dashboardControlBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/baseline_settings_applications_50"
-            android:text="Control"
-            android:layout_margin="10dp"
-            android:textSize="16dp"
             android:layout_gravity="center"
-            android:gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
             android:background="@drawable/dashboard_button_menu_style"
+            android:drawableTop="@drawable/baseline_settings_applications_50"
+            android:gravity="center"
             android:padding="15dp"
-            android:textColor="@color/white"/>
+            android:text="Control"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/dashboardCropTrack"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_button_menu_style"
+            android:drawableTop="@drawable/baseline_more_time_50"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Crop Track"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:layout_marginEnd="2dp"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
-            android:id="@+id/DashboardReportBtn"
-            android:layout_width="wrap_content"
+            android:id="@+id/dashboardReportBtn"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="3dp"
             android:layout_weight="1"
             android:background="@drawable/dashboard_button_menu_style"
             android:drawableTop="@drawable/baseline_report_50"
@@ -110,62 +151,74 @@
             android:padding="15dp"
             android:text="Report"
             android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <Button
             android:id="@+id/dashboardLiveBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="3dp"
             android:layout_weight="1"
+            android:background="@drawable/dashboard_button_menu_style"
             android:drawableTop="@drawable/baseline_live_tv_50"
             android:gravity="center"
-            android:text="Live"
-            android:textSize="16dp"
-            android:background="@drawable/dashboard_button_menu_style"
             android:padding="15dp"
-            android:textColor="@color/white"/>
+            android:text="Live"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/dashboardHowToBtn"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_button_menu_style"
+            android:drawableTop="@drawable/baseline_lightbulb_50"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="How To"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="80dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        android:padding="10dp">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <Button
-            android:id="@+id/dashboardHowToBtn"
+            android:id="@+id/dashboardLogoutBtn"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/baseline_lightbulb_50"
-            android:text="How To"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:textSize="16dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/dashboard_button_menu_style"
-            android:padding="15dp"
-            android:textColor="@color/white"/>
-
-        <Button
-            android:id="@+id/DashboardLogoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableTop="@drawable/baseline_logout_50"
+            android:background="@drawable/dashboard_button_menu_style"
+            android:padding="10dp"
             android:text="Log out"
-            android:layout_margin="10dp"
-            android:textSize="16dp"
+            android:drawableEnd="@drawable/baseline_logout_50"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/dashboard_button_menu_style"
-            android:padding="15dp"
-            android:textColor="@color/white"/>
+
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
