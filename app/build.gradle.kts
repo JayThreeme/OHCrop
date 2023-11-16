@@ -37,6 +37,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+
+    buildFeatures{
+        viewBinding = true
+    }
+
 }
 
 dependencies {
@@ -59,4 +65,12 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("androidx.recyclerview:recyclerview:1.2.0")
     implementation("androidx.cardview:cardview:1.0.0")
+
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")//charts
+
+    implementation ("io.data2viz.charts:core:1.1.0-eap1")//charts .kt
+    implementation ("io.data2viz.d2v:viz:0.8.12")//charts .kt
+    implementation ("com.android.tools:desugar_jdk_libs:1.1.5")//charts .kt
+
+
 }

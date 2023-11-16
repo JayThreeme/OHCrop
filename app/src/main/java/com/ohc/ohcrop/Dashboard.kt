@@ -40,7 +40,6 @@ class Dashboard : AppCompatActivity() {
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
-
 //        val monitor = findViewById<Button>(R.id.dashboardMonitorBtn)
 //        monitorButton.setOnClickListener {
 //            startActivity(Intent(this, Monitor::class.java))
@@ -63,10 +62,21 @@ class Dashboard : AppCompatActivity() {
             //toast("Crop Track")
             finish()
         }
+        reportButton.setOnClickListener {
+            startActivity(Intent(this, Reports::class.java))
+            //toast("Crop Track")
+            finish()
+        }
 
         howToButton.setOnClickListener {
             startActivity(Intent(this, HowTo::class.java))
             //toast("How To")
+            finish()
+        }
+
+
+        ProfileImgButton.setOnClickListener {
+            startActivity(Intent(this, Profile::class.java))
             finish()
         }
 
