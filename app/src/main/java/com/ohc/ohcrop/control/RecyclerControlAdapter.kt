@@ -1,4 +1,4 @@
-package com.ohc.ohcrop.utils
+package com.ohc.ohcrop.control
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +7,8 @@ import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.ohc.ohcrop.R
-import com.ohc.ohcrop.utils.Extensions.toast
 
 @Suppress("DEPRECATION")
 class RecyclerControlAdapter: RecyclerView.Adapter<RecyclerControlAdapter.ViewHolder>() {
@@ -19,7 +17,7 @@ class RecyclerControlAdapter: RecyclerView.Adapter<RecyclerControlAdapter.ViewHo
     private var details = arrayOf("item1", "item2", "item3", "item4", "item5", "item6")
     private var images = intArrayOf(R.drawable.water, R.drawable.watertemp, R.drawable.ph, R.drawable.airtemp, R.drawable.humidity, R.drawable.tds)
     private var switch = booleanArrayOf(true,true,true,true,true,true)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerControlAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.control_card_layout, parent, false)
         return ViewHolder(v)
     }
@@ -28,7 +26,7 @@ class RecyclerControlAdapter: RecyclerView.Adapter<RecyclerControlAdapter.ViewHo
         return title.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerControlAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemTitle.text = title[position]
         holder.itemDetail.text = details[position]
         holder.itemImage.setImageResource(images[position])

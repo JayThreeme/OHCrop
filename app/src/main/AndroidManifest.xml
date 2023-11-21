@@ -15,6 +15,15 @@
         android:theme="@style/Theme.OHCrop"
         tools:targetApi="31">
         <activity
+            android:name=".howto.appnavigation.AppNavigation"
+            android:exported="false" />
+        <activity
+            android:name=".howto.monitorandcontrol.MonitoringAndControl"
+            android:exported="false" />
+        <activity
+            android:name=".howto.monitoringsensors.MonitoringSensors"
+            android:exported="false" />
+        <activity
             android:name=".reports.AirTemp"
             android:exported="false" />
         <activity

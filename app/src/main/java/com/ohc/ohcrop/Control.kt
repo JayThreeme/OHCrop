@@ -7,10 +7,12 @@ import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ohc.ohcrop.utils.Extensions.toast
-import com.ohc.ohcrop.utils.RecyclerControlAdapter
+import com.ohc.ohcrop.control.RecyclerControlAdapter
 
 
 class Control : AppCompatActivity() {
+
+
     private lateinit var ProfileImgButton : ImageButton
     private lateinit var backButton : ImageButton
 

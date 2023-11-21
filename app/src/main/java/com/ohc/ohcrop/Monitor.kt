@@ -17,13 +17,11 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.ohc.ohcrop.databinding.ActivityMonitorBinding
+import com.ohc.ohcrop.utils.Extensions.toast
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import kotlin.math.round
 import kotlin.math.roundToInt
-
-
-
 
 class Monitor : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -40,21 +38,17 @@ class Monitor : AppCompatActivity() {
         binding = ActivityMonitorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        databaseListener()
+        databaseListener() //call function
 
-        backButton = findViewById<ImageButton>(R.id.imageBtnBack)
-        profileButton = findViewById<ImageButton>(R.id.imageBtnProfile)
 
-        backButton.setOnClickListener {
-            val intent = Intent(this, Dashboard::class.java)
-            startActivity(intent)
-            Toast.makeText(applicationContext,"Login Success!", Toast.LENGTH_SHORT).show()
+        binding.imageBtnBack.setOnClickListener {
+            startActivity(Intent(this, Dashboard::class.java))
+            finish()
         }
 
-        profileButton.setOnClickListener {
-            val intent = Intent(this, Dashboard::class.java)
-            startActivity(intent)
-            Toast.makeText(applicationContext,"Login Success!", Toast.LENGTH_SHORT).show()
+        binding.imageBtnProfile.setOnClickListener {
+            startActivity(Intent(this, Profile::class.java))
+            finish()
         }
     }
 

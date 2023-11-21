@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Dashboard"
-    android:background="@drawable/backgroundmain">
+    android:background="@drawable/backgroundmain"
+    android:id="@+id/howtomain">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -24,14 +25,14 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:src="@drawable/baseline_arrow_back_24"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="280dp"
             android:layout_height="wrap_content"
+            android:layout_margin="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_margin="0dp"
             android:padding="0dp">
 
             <ImageView
@@ -39,21 +40,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:src="@drawable/ohcroplogo"
-                android:layout_marginTop="30dp"/>
+                android:src="@drawable/ohcroplogo" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
-                android:text="Dashboard"
-                android:textStyle="bold"
-                android:textSize="20dp"
                 android:gravity="center"
+                android:text="Monitoring Sensors"
                 android:textColor="@color/textcolor_violet"
-                android:layout_marginTop="15dp"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -61,164 +62,138 @@
             android:id="@+id/imageBtnProfile"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:background="@color/transparent"
             android:src="@drawable/baseline_person_24"
-            android:layout_marginTop="30dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:padding="5dp"
-        android:elevation="2dp">
-
-        <Button
-            android:id="@+id/dashboardMonitorBtn"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/dashboard_button_menu_style"
-            android:drawableTop="@drawable/dashboard_monitor2"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Monitor"
-            android:textColor="@color/white"
-            android:textSize="14dp" />
-
-        <Button
-            android:id="@+id/dashboardControlBtn"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/dashboard_button_menu_style"
-            android:drawableTop="@drawable/dashboard_on_off"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Control"
-            android:textColor="@color/white"
-            android:textSize="14dp" />
-
-        <Button
-            android:id="@+id/dashboardCropTrack"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/dashboard_button_menu_style"
-            android:drawableTop="@drawable/dashboard_track"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Crop Track"
-            android:textColor="@color/white"
-            android:textSize="14dp" />
-
+            android:visibility="invisible" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginEnd="2dp"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
         android:orientation="horizontal"
         android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
         <Button
-            android:id="@+id/dashboardReportBtn"
+            android:id="@+id/btnphsensor"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="3dp"
             android:layout_weight="1"
-            android:background="@drawable/dashboard_button_menu_style"
-            android:drawableTop="@drawable/dashboard_report"
+            android:background="@drawable/howto_button_color"
+            android:drawableTop="@drawable/ph"
             android:gravity="center"
             android:padding="15dp"
-            android:text="Report"
-            android:textColor="@color/white"
+            android:text="PH Sensor"
+            android:textColor="@color/textcolor_blue_dark"
             android:textSize="14dp" />
 
         <Button
-            android:id="@+id/dashboardLiveBtn"
+            android:id="@+id/btntdssensor"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="3dp"
             android:layout_weight="1"
-            android:background="@drawable/dashboard_button_menu_style"
-            android:drawableTop="@drawable/dashboard_live"
+            android:background="@drawable/howto_button_color"
+            android:drawableTop="@drawable/tds"
             android:gravity="center"
             android:padding="15dp"
-            android:text="Live"
-            android:textColor="@color/white"
+            android:text="TDS Sensor"
+            android:textColor="@color/textcolor_blue_dark"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout3">
+
+        <Button
+            android:id="@+id/btnwatersensor"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/howto_button_color"
+            android:drawableTop="@drawable/water"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Water  Sensor"
+            android:textColor="@color/textcolor_blue_dark"
             android:textSize="14dp" />
 
         <Button
-            android:id="@+id/dashboardHowToBtn"
+            android:id="@+id/btnwatertempsensor"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="3dp"
             android:layout_weight="1"
-            android:background="@drawable/dashboard_button_menu_style"
-            android:drawableTop="@drawable/dashboard_user_guide"
+            android:background="@drawable/howto_button_color"
+            android:drawableTop="@drawable/watertemp"
             android:gravity="center"
             android:padding="15dp"
-            android:text="How To"
-            android:textColor="@color/white"
+            android:text="Water Temp Sensor"
+            android:textColor="@color/textcolor_blue_dark"
             android:textSize="14dp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
         android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        android:padding="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout2">
 
         <Button
-            android:id="@+id/dashboardLogoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/dashboard_button_menu_style"
-            android:padding="10dp"
-            android:text="Log out"
-            android:drawableEnd="@drawable/baseline_logout_50"
+            android:id="@+id/btnhumiditysensor"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/howto_button_color"
+            android:drawableTop="@drawable/humidity"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Humidity Sensor"
+            android:textColor="@color/textcolor_blue_dark"
+            android:textSize="14dp" />
 
-            android:textColor="@color/white"
-            android:textSize="16dp" />
-
+        <Button
+            android:id="@+id/btntempsensor"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/howto_button_color"
+            android:drawableTop="@drawable/airtemp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Temperature Sensor"
+            android:textColor="@color/textcolor_blue_dark"
+            android:textSize="14dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -72,6 +72,7 @@ class CropTrack : AppCompatActivity() {
         ProfileImgButton = findViewById(R.id.imageBtnProfile)
         backButton = findViewById(R.id.imageBtnBack)
 
+
         //set no of crops ids
         noOfCropText = findViewById(R.id.ctNoOfCropText)
         noOfCropPlusButton = findViewById(R.id.ctNoOfCropPLUS)

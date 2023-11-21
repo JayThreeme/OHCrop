@@ -25,7 +25,7 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:src="@drawable/baseline_arrow_back_24"
-            android:visibility="visible"/>
+            android:visibility="invisible"/>
 
         <LinearLayout
             android:layout_width="280dp"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="HowTo"
+                android:text="Monitoring and Control"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:gravity="center"
@@ -65,7 +65,8 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:src="@drawable/baseline_person_24"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 
@@ -80,22 +81,35 @@
         android:padding="5dp"
         android:elevation="2dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/howToRecyclerView"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/dashboardMonitorBtn3"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
-            tools:itemCount="10"/>
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_button_menu_style"
+            android:drawableTop="@drawable/baseline_monitor_50"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Monitor"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/dashboardMonitorBtn2"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_button_menu_style"
+            android:drawableTop="@drawable/baseline_monitor_50"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Control"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@id/howmains">
-
-    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

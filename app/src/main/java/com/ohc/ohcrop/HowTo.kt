@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ohc.ohcrop.utils.CustomAdapter
+import com.ohc.ohcrop.howto.CustomAdapter
 import com.ohc.ohcrop.utils.Extensions.toast
-import com.ohc.ohcrop.utils.ItemsViewModel
+import com.ohc.ohcrop.howto.ItemsViewModel
 
 class HowTo : AppCompatActivity() {
 
@@ -24,31 +24,44 @@ class HowTo : AppCompatActivity() {
         backButton = findViewById(R.id.imageBtnBack)
 
         // getting the recyclerview by its id
-        recyclerview = findViewById(R.id.cropTrackRecyclerView)
+        recyclerview = findViewById(R.id.howToRecyclerView)
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
         // ArrayList of class ItemsViewModel
         val data = ArrayList<ItemsViewModel>()
         // This loop will create 20 Views containing
         // the image with the count of view
-        for (i in 1..10) {
-            data.add(ItemsViewModel(R.drawable.ic_baseline_folder_24, "Item " + i))
-        }
+//        for (i in 1..10) {
+//            data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "Item " + i))
+//        }
+        data.add(ItemsViewModel(R.drawable.import_web_analytics, "OhCrop Monitoring & Control"))
+        data.add(ItemsViewModel(R.drawable.import_metering, "Ohcrop Monitoring Sensors"))
+        data.add(ItemsViewModel(R.drawable.import_travel, "OhCrop App Navigation"))
+        data.add(ItemsViewModel(R.drawable.import_hydroponic, "What is Hydroponic"))
+        data.add(ItemsViewModel(R.drawable.import_lettuce, "Hydroponic Crops"))
+        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
+        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
+        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
+        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
+        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
+        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
+        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
+
         // This will pass the ArrayList to our Adapter
-        val adapter = CustomAdapter(data)
+        val adapter = CustomAdapter(data, this)
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
 
 
+
+
+
         ProfileImgButton.setOnClickListener {
             startActivity(Intent(this, Profile::class.java))
-            toast("Profile")
             finish()
         }
-
         backButton.setOnClickListener {
             startActivity(Intent(this, Dashboard::class.java))
-            toast("Crop yield")
             finish()
         }
     }

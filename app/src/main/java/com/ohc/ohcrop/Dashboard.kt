@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.ohc.ohcrop.databinding.ActivityDashboardBinding
 import com.ohc.ohcrop.utils.Extensions.toast
 import com.ohc.ohcrop.utils.FirebaseUtils.firebaseAuth
 
@@ -40,12 +41,6 @@ class Dashboard : AppCompatActivity() {
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
-//        val monitor = findViewById<Button>(R.id.dashboardMonitorBtn)
-//        monitorButton.setOnClickListener {
-//            startActivity(Intent(this, Monitor::class.java))
-//            Toast.makeText(applicationContext,"Monitor System", Toast.LENGTH_SHORT).show()
-//            finish()
-//        }
 
         monitorButton.setOnClickListener {
             startActivity(Intent(this, Monitor::class.java))
