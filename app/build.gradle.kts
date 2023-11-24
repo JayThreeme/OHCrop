@@ -72,5 +72,9 @@ dependencies {
     implementation ("io.data2viz.d2v:viz:0.8.12")//charts .kt
     implementation ("com.android.tools:desugar_jdk_libs:1.1.5")//charts .kt
 
+    implementation ("com.github.AnyChart:AnyChart-Android:1.1.5")//anyChart
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-datetime:0.3.0")//datetime kotlin
+
 
 }

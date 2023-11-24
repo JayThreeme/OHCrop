@@ -5,12 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
-import com.ohc.ohcrop.reports.AirTemp
-import com.ohc.ohcrop.reports.Humidity
-import com.ohc.ohcrop.reports.Ph
-import com.ohc.ohcrop.reports.Tds
-import com.ohc.ohcrop.reports.Water
-import com.ohc.ohcrop.reports.WaterTemp
+import com.ohc.ohcrop.reports.ChartChoice
 
 
 class Reports : AppCompatActivity() {
@@ -39,27 +34,39 @@ class Reports : AppCompatActivity() {
         airtemp_btn = findViewById(R.id.rBtn_AirTemp)
 
         phlevel_btn.setOnClickListener {
-            startActivity(Intent(this, Ph::class.java))
+            val intent = Intent(this, ChartChoice::class.java)
+            intent.putExtra("reports","ph")
+            this.startActivity(intent)
             finish()
         }
         tds_btn.setOnClickListener {
-            startActivity(Intent(this, Tds::class.java))
+            val intent = Intent(this, ChartChoice::class.java)
+            intent.putExtra("reports","tds")
+            this.startActivity(intent)
             finish()
         }
         waterlvel_btn.setOnClickListener {
-            startActivity(Intent(this, Water::class.java))
+            val intent = Intent(this, ChartChoice::class.java)
+            intent.putExtra("reports","waterlevel")
+            this.startActivity(intent)
             finish()
         }
         watertemp_btn.setOnClickListener {
-            startActivity(Intent(this, WaterTemp::class.java))
+            val intent = Intent(this, ChartChoice::class.java)
+            intent.putExtra("reports","watertemp")
+            this.startActivity(intent)
             finish()
         }
         humidity_btn.setOnClickListener {
-            startActivity(Intent(this, Humidity::class.java))
+            val intent = Intent(this, ChartChoice::class.java)
+            intent.putExtra("reports","humidity")
+            this.startActivity(intent)
             finish()
         }
         airtemp_btn.setOnClickListener {
-            startActivity(Intent(this, AirTemp::class.java))
+            val intent = Intent(this, ChartChoice::class.java)
+            intent.putExtra("reports","temperature")
+            this.startActivity(intent)
             finish()
         }
 

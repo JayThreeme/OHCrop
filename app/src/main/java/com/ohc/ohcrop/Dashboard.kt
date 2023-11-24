@@ -62,6 +62,11 @@ class Dashboard : AppCompatActivity() {
             //toast("Crop Track")
             finish()
         }
+        liveButton.setOnClickListener {
+            startActivity(Intent(this, Live::class.java))
+            //toast("Crop Track")
+            finish()
+        }
 
         howToButton.setOnClickListener {
             startActivity(Intent(this, HowTo::class.java))
