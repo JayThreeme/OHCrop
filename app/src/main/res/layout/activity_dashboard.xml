@@ -179,7 +179,7 @@
             android:drawableTop="@drawable/dashboard_user_guide"
             android:gravity="center"
             android:padding="15dp"
-            android:text="How To"
+            android:text="Know How"
             android:textColor="@color/white"
             android:textSize="14dp" />
     </LinearLayout>
@@ -187,7 +187,7 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="130dp"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -195,14 +195,68 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
 
+        <Button
+            android:id="@+id/blank1"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_button_menu_style"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/blank2"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_button_menu_style"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:enabled="false"/>
+        <Button
+            android:id="@+id/blank3"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_button_menu_style"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:enabled="false"/>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout4"
+        app:layout_constraintEnd_toStartOf="@id/linearLayout6"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
         <Button
             android:id="@+id/dashboardLogoutBtn"

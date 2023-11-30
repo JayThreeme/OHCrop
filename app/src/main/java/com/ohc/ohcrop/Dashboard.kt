@@ -1,13 +1,16 @@
 package com.ohc.ohcrop
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ohc.ohcrop.databinding.ActivityDashboardBinding
 import com.ohc.ohcrop.utils.Extensions.toast
+import com.ohc.ohcrop.utils.FirebaseUtils
 import com.ohc.ohcrop.utils.FirebaseUtils.firebaseAuth
 
 class Dashboard : AppCompatActivity() {
@@ -24,6 +27,8 @@ class Dashboard : AppCompatActivity() {
     private lateinit var logOutButton : Button
 
     private var mFirebaseAnalytics: FirebaseAnalytics? = null
+
+    private lateinit var userID: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -40,6 +45,8 @@ class Dashboard : AppCompatActivity() {
         logOutButton = findViewById(R.id.dashboardLogoutBtn)
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+
+        userID = FirebaseUtils.firebaseAuth.currentUser!!.uid
 
 
         monitorButton.setOnClickListener {
@@ -87,5 +94,25 @@ class Dashboard : AppCompatActivity() {
             finish()
         }
 
+        valueoff()
+
+    }
+
+    private fun valueoff() {
+        val userMap = hashMapOf(
+            "devicestatus" to false,
+            "deviceip" to "",
+            "devicessid" to "",
+            "ph" to false,
+            "tds" to false,
+            "water" to false,
+            "watertemp" to false,
+            "humidity" to false,
+            "airtemp" to false
+        )
+
+        FirebaseUtils.firestore.collection("user").document(userID).collection("setting").document("default").set(userMap)
+            .addOnSuccessListener { Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writing document",e) }
     }
 }

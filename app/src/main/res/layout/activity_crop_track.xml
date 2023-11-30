@@ -227,7 +227,7 @@
                             android:textSize="30dp"/>
 
                         <TextView
-                            android:id="@+id/ctTransplantDays"
+                            android:id="@+id/daystext1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
@@ -366,7 +366,7 @@
                             android:textSize="30dp"/>
 
                         <TextView
-                            android:id="@+id/textView22"
+                            android:id="@+id/daystext2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
