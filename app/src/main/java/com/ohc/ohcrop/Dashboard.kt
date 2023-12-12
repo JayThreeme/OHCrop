@@ -94,25 +94,25 @@ class Dashboard : AppCompatActivity() {
             finish()
         }
 
-        valueoff()
+       // valueoff()
 
     }
 
-    private fun valueoff() {
-        val userMap = hashMapOf(
-            "devicestatus" to false,
-            "deviceip" to "",
-            "devicessid" to "",
-            "ph" to false,
-            "tds" to false,
-            "water" to false,
-            "watertemp" to false,
-            "humidity" to false,
-            "airtemp" to false
-        )
-
-        FirebaseUtils.firestore.collection("user").document(userID).collection("setting").document("default").set(userMap)
-            .addOnSuccessListener { Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!") }
-            .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writing document",e) }
-    }
+//    private fun valueoff() {
+//        val userMap = hashMapOf(
+//            "devicestatus" to false,
+//            "deviceip" to "",
+//            "devicessid" to "",
+//            "ph" to false,
+//            "tds" to false,
+//            "water" to false,
+//            "watertemp" to false,
+//            "humidity" to false,
+//            "airtemp" to false
+//        )
+//
+//        FirebaseUtils.firestore.collection("user").document(userID).collection("setting").document("default").set(userMap)
+//            .addOnSuccessListener { Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!") }
+//            .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writing document",e) }
+//    }
 }

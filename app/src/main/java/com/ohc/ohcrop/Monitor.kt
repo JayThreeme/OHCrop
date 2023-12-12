@@ -65,7 +65,7 @@ class Monitor : AppCompatActivity() {
 
 
     private fun statusListener() {
-        val ref = FirebaseUtils.firestore.collection("user").document(userID).collection("setting").document("default")
+        val ref = firestore.collection("user").document(userID).collection("setting").document("default")
         ref.get().addOnSuccessListener {
             if (it != null){
                 val devicestatus: Boolean = it.data?.get("devicestatus").toString().toBoolean()

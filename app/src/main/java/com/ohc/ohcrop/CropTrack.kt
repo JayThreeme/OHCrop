@@ -1,5 +1,6 @@
 package com.ohc.ohcrop
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.ContentValues
 import android.content.Intent
@@ -20,6 +21,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 import kotlin.properties.Delegates
 
@@ -55,7 +57,7 @@ class CropTrack : AppCompatActivity() {
     //variables
     private  val calendar = Calendar.getInstance()
     private lateinit var userID: String
-    private lateinit var dateToday: String
+    private lateinit var thedateToday: String
     private var dayToday by Delegates.notNull<Int>()
     private lateinit var noOfCrops: String
     private lateinit var SowingStartDate: String
@@ -88,8 +90,8 @@ class CropTrack : AppCompatActivity() {
         val month = calendar.get(Calendar.MONTH) + 1
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         dayToday = calendar.get(Calendar.DAY_OF_MONTH)
-        dateToday = "$year-$month-$day"
-        dateTodayText.text = "Date Today: "+ dateToday
+        thedateToday = ("$year-$month-$day").toString()
+        dateTodayText.text = "Date Today: "+ thedateToday
 
         //find IDs
         SowingDaysCount = findViewById(R.id.ctSowingDaysCount)
@@ -262,34 +264,41 @@ class CropTrack : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SuspiciousIndentation")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun croptrackCountDays() {
-        val dayTodayis = LocalDate.parse(dateToday, DateTimeFormatter.ISO_DATE)
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-d")
+              //val dayTodayis = LocalDate.parse(dateToday, DateTimeFormatter.ISO_DATE)
+            val dayTodayis = LocalDate.parse(thedateToday, formatter)
 
-        val sowStartdateparse = LocalDate.parse(SowingStartDate, DateTimeFormatter.ISO_DATE)
-        val sowStartDay = sowStartdateparse.dayOfMonth.toString().toInt()
-        val sowEnddateparse = LocalDate.parse(SowingEndDate, DateTimeFormatter.ISO_DATE)
-        val sownoOfDays = dayToday - sowStartDay
+                //val localDate = LocalDate.parse(dateString, formatter)
 
-        if (sowEnddateparse < dayTodayis){
-            SowingDaysCount.text = "Done"
-            daystext1.text = ""
-        }else{
-            SowingDaysCount.text = sownoOfDays.toString()
-        }
+            val sowStartdateparse = LocalDate.parse(SowingStartDate, DateTimeFormatter.ISO_DATE)
+            val sowStartDay = sowStartdateparse.dayOfMonth.toString().toInt()
+            val sowEnddateparse = LocalDate.parse(SowingEndDate, DateTimeFormatter.ISO_DATE)
+            val sownoOfDays = dayToday - sowStartDay
 
-        val transStartdateparse = LocalDate.parse(TranplantStartDate, DateTimeFormatter.ISO_DATE)
-        val transStartDay = transStartdateparse.dayOfMonth.toString().toInt()
-        val transEnddateparse = LocalDate.parse(TranplantEndDate, DateTimeFormatter.ISO_DATE)
-        val transnoOfDays = dayToday - transStartDay
+            if (sowEnddateparse < dayTodayis){
+                SowingDaysCount.text = "Done"
+                daystext1.text = ""
+            }else{
+                SowingDaysCount.text = sownoOfDays.toString()
+            }
+
+            val transStartdateparse = LocalDate.parse(TranplantStartDate, DateTimeFormatter.ISO_DATE)
+            val transStartDay = transStartdateparse.dayOfMonth.toString().toInt()
+            val transEnddateparse = LocalDate.parse(TranplantEndDate, DateTimeFormatter.ISO_DATE)
+            val transnoOfDays = dayToday - transStartDay
 
 
-        if (transEnddateparse < dayTodayis){
-            TranspltDaysCount.text = "Done"
-            daystext2.text = ""
-        }else{
-            TranspltDaysCount.text = transnoOfDays.toString()
-        }
+            if (transEnddateparse < dayTodayis){
+                TranspltDaysCount.text = "Done"
+                daystext2.text = ""
+            }else{
+                TranspltDaysCount.text = transnoOfDays.toString()
+            }
+                //println("Parsed Date: $localDate")
+
     }
 
     private fun notEmptySowing(): Boolean = SowingStartDateText.text.toString().isNotBlank() && SowingEndDateText.text.toString().isNotBlank()
