@@ -180,9 +180,9 @@ class Monitor : AppCompatActivity() {
                     binding.textOtherResult.setText("airtemp level null")
                 }
 
-                if (tds.toString() != null){
+                if (tds.toString()!= null){
                     binding.progressbarTdslevel.setProgress(tds.toString().toDouble().toInt(), true)
-                    binding.textTdsLevel.setText(tds.toString()+"ppm")
+                    binding.textTdsLevel.setText(tds.toString().toDouble().toInt().toString()+"ppm")
                 }else{
                     binding.textOtherResult.setText("tds level null")
                 }

@@ -217,7 +217,7 @@
                             android:layout_alignLeft="@id/progressbar_tdslevel"
                             android:layout_alignRight="@id/progressbar_tdslevel"
                             android:text="0"
-                            android:textSize="25dp"
+                            android:textSize="20dp"
                             android:textStyle="bold"
                             />
 
@@ -231,7 +231,7 @@
                             android:progress="0"
                             android:progressDrawable="@drawable/monitor_progressbar_ring_1"
                             android:rotation="90"
-                            android:max="20"/>
+                            android:max="1000"/>
                     </RelativeLayout>
 
                     <TextView
