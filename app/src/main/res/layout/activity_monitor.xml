@@ -28,9 +28,9 @@
         <LinearLayout
             android:layout_width="280dp"
             android:layout_height="wrap_content"
+            android:layout_margin="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_margin="0dp"
             android:padding="0dp">
 
             <ImageView
@@ -38,21 +38,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:src="@drawable/ohcroplogo"
-                android:layout_marginTop="30dp"/>
+                android:src="@drawable/ohcroplogo" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
-                android:text="Monitoring System"
-                android:textStyle="bold"
-                android:textSize="20dp"
                 android:gravity="center"
+                android:text="Monitoring System"
                 android:textColor="@color/textcolor_violet"
-                android:layout_marginTop="15dp"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -60,82 +60,27 @@
             android:id="@+id/imageBtnProfile"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:background="@color/transparent"
-            android:src="@drawable/baseline_person_24"
-            android:layout_marginTop="30dp"/>
+            android:src="@drawable/baseline_person_24" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="2dp"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        android:layout_height="0dp"
+        android:contentDescription="@string/ohcropdevice"
+        android:fillViewport="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@id/blankTextView"
+        android:padding="10dp">
 
         <LinearLayout
-            android:layout_width="70dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="5dp">
-
-            <RelativeLayout
-                android:id="@+id/relativelayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ProgressBar
-                    android:id="@+id/progressbar_water_level"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:max="13"
-                    android:progress="0"
-                    android:progressDrawable="@drawable/monitor_progressbar_horizontal"
-                    android:rotation="90"
-                    android:scaleX="5"
-                    android:layout_marginTop="5dp"/>
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_alignBottom="@id/progressbar_water_level"
-                    android:text="Water"
-                    android:textSize="16dp"
-                    android:textStyle="normal"
-                    android:textColor="@color/white"/>
-
-
-                <TextView
-                    android:id="@+id/text_waterTemperature"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="0°C"
-                    android:textSize="22dp"
-                    android:textStyle="bold"
-                    android:layout_alignTop="@id/progressbar_water_level"
-                    android:textColor="@color/white"/>
-            </RelativeLayout>
-
-
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -144,224 +89,313 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="70dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/relativelayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/text_phlevel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_alignTop="@id/progressbar_phLevel"
-                            android:layout_alignBottom="@id/progressbar_phLevel"
-                            android:layout_alignLeft="@id/progressbar_phLevel"
-                            android:layout_alignRight="@id/progressbar_phLevel"
-                            android:text="0%"
-                            android:textSize="30dp"
-                            android:textStyle="bold"
-                            />
+                        android:layout_height="match_parent">
 
                         <ProgressBar
-                            android:id="@+id/progressbar_phLevel"
-                            style="?android:attr/progressBarStyle"
-                            android:layout_width="140dp"
-                            android:layout_height="140dp"
-                            android:layout_weight="1"
-                            android:indeterminateOnly="false"
+                            android:id="@+id/progressbar_water_level"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:layout_marginTop="5dp"
+                            android:max="13"
                             android:progress="0"
-                            android:progressDrawable="@drawable/monitor_progressbar_ring_1"
+                            android:progressDrawable="@drawable/monitor_progressbar_horizontal"
                             android:rotation="90"
-                            android:max="13"/>
+                            android:scaleX="5" />
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/progressbar_water_level"
+                            android:gravity="center"
+                            android:text="Water"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            android:textStyle="normal" />
+
+
+                        <TextView
+                            android:id="@+id/text_waterTemperature"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/progressbar_water_level"
+                            android:gravity="center"
+                            android:text="0°C"
+                            android:textColor="@color/white"
+                            android:textSize="22dp"
+                            android:textStyle="bold" />
                     </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="ph level"
-                        android:textSize="16dp"
-                        android:textStyle="bold"/>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center">
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/text_tdsLevel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_alignTop="@id/progressbar_tdslevel"
-                            android:layout_alignBottom="@id/progressbar_tdslevel"
-                            android:layout_alignLeft="@id/progressbar_tdslevel"
-                            android:layout_alignRight="@id/progressbar_tdslevel"
-                            android:text="0"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            />
-
-                        <ProgressBar
-                            android:id="@+id/progressbar_tdslevel"
-                            style="?android:attr/progressBarStyle"
-                            android:layout_width="140dp"
-                            android:layout_height="140dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:indeterminateOnly="false"
-                            android:progress="0"
-                            android:progressDrawable="@drawable/monitor_progressbar_ring_1"
-                            android:rotation="90"
-                            android:max="1000"/>
-                    </RelativeLayout>
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView11"
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/text_phlevel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@id/progressbar_phLevel"
+                                    android:layout_alignTop="@id/progressbar_phLevel"
+                                    android:layout_alignRight="@id/progressbar_phLevel"
+                                    android:layout_alignBottom="@id/progressbar_phLevel"
+                                    android:gravity="center"
+                                    android:text="0%"
+                                    android:textSize="30dp"
+                                    android:textStyle="bold" />
+
+                                <ProgressBar
+                                    android:id="@+id/progressbar_phLevel"
+                                    style="?android:attr/progressBarStyle"
+                                    android:layout_width="140dp"
+                                    android:layout_height="140dp"
+                                    android:layout_weight="1"
+                                    android:indeterminateOnly="false"
+                                    android:max="13"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/monitor_progressbar_ring_1"
+                                    android:rotation="90" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/textView10"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="ph level"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/text_tdsLevel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@id/progressbar_tdslevel"
+                                    android:layout_alignTop="@id/progressbar_tdslevel"
+                                    android:layout_alignRight="@id/progressbar_tdslevel"
+                                    android:layout_alignBottom="@id/progressbar_tdslevel"
+                                    android:gravity="center"
+                                    android:text="0"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <ProgressBar
+                                    android:id="@+id/progressbar_tdslevel"
+                                    style="?android:attr/progressBarStyle"
+                                    android:layout_width="140dp"
+                                    android:layout_height="140dp"
+                                    android:layout_weight="1"
+                                    android:indeterminateOnly="false"
+                                    android:max="1000"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/monitor_progressbar_ring_1"
+                                    android:rotation="90" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/textView11"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="TDS level"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TDS level"
-                        android:gravity="center"
-                        android:textSize="16dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/text_humidity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@id/progressbar_humidity"
+                                    android:layout_alignTop="@id/progressbar_humidity"
+                                    android:layout_alignRight="@id/progressbar_humidity"
+                                    android:layout_alignBottom="@id/progressbar_humidity"
+                                    android:gravity="center"
+                                    android:text="0%"
+                                    android:textSize="30dp"
+                                    android:textStyle="bold" />
+
+                                <ProgressBar
+                                    android:id="@+id/progressbar_humidity"
+                                    style="?android:attr/progressBarStyle"
+                                    android:layout_width="140dp"
+                                    android:layout_height="140dp"
+                                    android:layout_weight="1"
+                                    android:indeterminateOnly="false"
+                                    android:max="100"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/monitor_progressbar_ring_1"
+                                    android:rotation="90" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/textView12"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Humidity"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/text_airtemp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@id/progressbar_airTemp"
+                                    android:layout_alignTop="@id/progressbar_airTemp"
+                                    android:layout_alignRight="@id/progressbar_airTemp"
+                                    android:layout_alignBottom="@id/progressbar_airTemp"
+                                    android:gravity="center"
+                                    android:text="0%"
+                                    android:textSize="25dp"
+                                    android:textStyle="bold" />
+
+                                <ProgressBar
+                                    android:id="@+id/progressbar_airTemp"
+                                    style="?android:attr/progressBarStyle"
+                                    android:layout_width="140dp"
+                                    android:layout_height="140dp"
+                                    android:layout_weight="1"
+                                    android:indeterminateOnly="false"
+                                    android:max="50"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/monitor_progressbar_ring_1"
+                                    android:rotation="90" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/textView13"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Temperature"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
+                android:layout_height="30dp"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textView74"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/text_humidity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_alignTop="@id/progressbar_humidity"
-                            android:layout_alignBottom="@id/progressbar_humidity"
-                            android:layout_alignLeft="@id/progressbar_humidity"
-                            android:layout_alignRight="@id/progressbar_humidity"
-                            android:text="0%"
-                            android:textSize="30dp"
-                            android:textStyle="bold"
-                            />
-
-                        <ProgressBar
-                            android:id="@+id/progressbar_humidity"
-                            style="?android:attr/progressBarStyle"
-                            android:layout_width="140dp"
-                            android:layout_height="140dp"
-                            android:layout_weight="1"
-                            android:indeterminateOnly="false"
-                            android:progress="0"
-                            android:progressDrawable="@drawable/monitor_progressbar_ring_1"
-                            android:rotation="90"
-                            android:max="100"/>
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Humidity"
-                        android:gravity="center"
-                        android:textSize="16dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/text_airtemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_alignTop="@id/progressbar_airTemp"
-                            android:layout_alignBottom="@id/progressbar_airTemp"
-                            android:layout_alignLeft="@id/progressbar_airTemp"
-                            android:layout_alignRight="@id/progressbar_airTemp"
-                            android:text="0%"
-                            android:textSize="25dp"
-                            android:textStyle="bold"
-                            />
-
-                        <ProgressBar
-                            android:id="@+id/progressbar_airTemp"
-                            style="?android:attr/progressBarStyle"
-                            android:layout_width="140dp"
-                            android:layout_height="140dp"
-                            android:layout_weight="1"
-                            android:indeterminateOnly="false"
-                            android:progress="0"
-                            android:progressDrawable="@drawable/monitor_progressbar_ring_1"
-                            android:rotation="90"
-                            android:max="50"/>
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Temperature"
-                        android:gravity="center"
-                        android:textSize="16dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
+                    android:layout_height="wrap_content"
+                    android:text="Realtime monitoring for sensors data"
+                    android:textAlignment="center"
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="20dp"
+                android:background="@drawable/global_drawable_card1"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/monitordevicetexttitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Status"
+                    android:textSize="20dp"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    />
 
                 <TextView
                     android:id="@+id/monitordevicetext"
@@ -369,65 +403,31 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="OhCrop Device Status: " />
+
                 <TextView
                     android:id="@+id/monitorssidtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Device SSID: " />
+
                 <TextView
                     android:id="@+id/monitoriptext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Device IP: " />
-                <TextView
-                    android:id="@+id/monitorphtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Ph Status: " />
-                <TextView
-                    android:id="@+id/monitortdstext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TDS Status: " />
-                <TextView
-                    android:id="@+id/monitorwatertext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Water Level Status: " />
-                <TextView
-                    android:id="@+id/monitorwatertemptext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Water Temp Status: " />
-                <TextView
-                    android:id="@+id/monitorhumiditytext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Humidity Status: " />
-                <TextView
-                    android:id="@+id/monitorairtemptext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Temperature Status: " />
-                <TextView
-                    android:id="@+id/textOtherResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="others: " />
 
             </LinearLayout>
-
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
+    <TextView
+        android:id="@+id/blankTextView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

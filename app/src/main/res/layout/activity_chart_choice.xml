@@ -107,7 +107,8 @@
             android:padding="10dp"
             android:textAlignment="center"
             android:drawablePadding="10dp"
-            android:fontFamily="@font/nunito_extrabold"/>
+            android:fontFamily="@font/nunito_extrabold"
+            android:visibility="visible"/>
         <Button
             android:id="@+id/piechartbtn"
             android:layout_width="match_parent"
@@ -122,7 +123,8 @@
             android:padding="10dp"
             android:textAlignment="center"
             android:drawablePadding="10dp"
-            android:fontFamily="@font/nunito_extrabold"/>
+            android:fontFamily="@font/nunito_extrabold"
+            android:visibility="gone"/>
         <Button
             android:id="@+id/scatterplotbtn"
             android:layout_width="match_parent"
@@ -137,7 +139,8 @@
             android:padding="10dp"
             android:textAlignment="center"
             android:drawablePadding="10dp"
-            android:fontFamily="@font/nunito_extrabold"/>
+            android:fontFamily="@font/nunito_extrabold"
+            android:visibility="gone"/>
         <Button
             android:id="@+id/radargraphbtn"
             android:layout_width="match_parent"
@@ -152,7 +155,8 @@
             android:padding="10dp"
             android:textAlignment="center"
             android:drawablePadding="10dp"
-            android:fontFamily="@font/nunito_extrabold"/>
+            android:fontFamily="@font/nunito_extrabold"
+            android:visibility="gone"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

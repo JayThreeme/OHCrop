@@ -1,17 +1,14 @@
 package com.ohc.ohcrop
 
-import android.content.ContentValues
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.ohc.ohcrop.databinding.ActivityDashboardBinding
-import com.ohc.ohcrop.utils.Extensions.toast
+import com.ohc.ohcrop.reports.datareports.DataReports
 import com.ohc.ohcrop.utils.FirebaseUtils
-import com.ohc.ohcrop.utils.FirebaseUtils.firebaseAuth
 
 class Dashboard : AppCompatActivity() {
 
@@ -24,11 +21,15 @@ class Dashboard : AppCompatActivity() {
     private lateinit var reportButton : Button
     private lateinit var liveButton : Button
     private lateinit var howToButton : Button
-    private lateinit var logOutButton : Button
+    private lateinit var calculatorButton : Button
+    private lateinit var settingsButton : Button
+
 
     private var mFirebaseAnalytics: FirebaseAnalytics? = null
 
+
     private lateinit var userID: String
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -42,7 +43,8 @@ class Dashboard : AppCompatActivity() {
         reportButton = findViewById(R.id.dashboardReportBtn)
         liveButton = findViewById(R.id.dashboardLiveBtn)
         howToButton = findViewById(R.id.dashboardHowToBtn)
-        logOutButton = findViewById(R.id.dashboardLogoutBtn)
+        calculatorButton  = findViewById(R.id.dashboardCalcBtn)
+        settingsButton = findViewById(R.id.dashboardSettingsBtn2)
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
@@ -60,17 +62,17 @@ class Dashboard : AppCompatActivity() {
             finish()
         }
         cropTrack.setOnClickListener {
-            startActivity(Intent(this, CropTrack::class.java))
+            startActivity(Intent(this, CropTracker::class.java))
             //toast("Crop Track")
             finish()
         }
         reportButton.setOnClickListener {
-            startActivity(Intent(this, Reports::class.java))
+            startActivity(Intent(this, DataReports::class.java))
             //toast("Crop Track")
             finish()
         }
         liveButton.setOnClickListener {
-            startActivity(Intent(this, Live::class.java))
+            startActivity(Intent(this, LiveMonitoring::class.java))
             //toast("Crop Track")
             finish()
         }
@@ -81,38 +83,22 @@ class Dashboard : AppCompatActivity() {
             finish()
         }
 
+        calculatorButton.setOnClickListener {
+            startActivity(Intent(this, Calculator::class.java))
+            //toast("Monitor System")
+            finish()
+        }
+
+        settingsButton.setOnClickListener {
+            startActivity(Intent(this, Settings::class.java))
+            //toast("Monitor System")
+            finish()
+        }
 
         ProfileImgButton.setOnClickListener {
             startActivity(Intent(this, Profile::class.java))
             finish()
         }
 
-        logOutButton.setOnClickListener {
-            firebaseAuth.signOut()
-            startActivity(Intent(this, Login::class.java))
-            toast("signed out")
-            finish()
-        }
-
-       // valueoff()
-
     }
-
-//    private fun valueoff() {
-//        val userMap = hashMapOf(
-//            "devicestatus" to false,
-//            "deviceip" to "",
-//            "devicessid" to "",
-//            "ph" to false,
-//            "tds" to false,
-//            "water" to false,
-//            "watertemp" to false,
-//            "humidity" to false,
-//            "airtemp" to false
-//        )
-//
-//        FirebaseUtils.firestore.collection("user").document(userID).collection("setting").document("default").set(userMap)
-//            .addOnSuccessListener { Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!") }
-//            .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writing document",e) }
-//    }
 }

@@ -6,8 +6,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import com.ohc.ohcrop.utils.Extensions.toast
 import com.ohc.ohcrop.utils.FirebaseUtils
 
 class Profile : AppCompatActivity() {
@@ -18,8 +20,9 @@ class Profile : AppCompatActivity() {
     private lateinit var p_pass : TextView
     private lateinit var p_phone : TextView
     private lateinit var p_email : TextView
-
+    private lateinit var logOutButton : Button
     private lateinit var userID: String
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -28,6 +31,7 @@ class Profile : AppCompatActivity() {
 
         userID = FirebaseUtils.firebaseAuth.currentUser!!.uid
 
+        logOutButton = findViewById(R.id.dashboardLogoutBtn)
         p_name = findViewById(R.id.p_name)
         p_pass = findViewById(R.id.p_pass)
         p_phone = findViewById(R.id.p_phone)
@@ -37,6 +41,13 @@ class Profile : AppCompatActivity() {
 
         backButton.setOnClickListener {
             startActivity(Intent(this, Dashboard::class.java))
+            finish()
+        }
+
+        logOutButton.setOnClickListener {
+            FirebaseUtils.firebaseAuth.signOut()
+            startActivity(Intent(this, Login::class.java))
+            toast("signed out")
             finish()
         }
     }
@@ -58,9 +69,8 @@ class Profile : AppCompatActivity() {
                 p_pass.text = pass
                 p_phone.text = phone
                 p_email.text = email
-        }
-            .addOnFailureListener {
+        }.addOnFailureListener {
                     e -> Log.w(ContentValues.TAG, "Error writing document",e)
-            }
+        }
     }
 }

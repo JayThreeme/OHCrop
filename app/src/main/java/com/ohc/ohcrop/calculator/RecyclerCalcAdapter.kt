@@ -1,37 +1,33 @@
-package com.ohc.ohcrop.control
+package com.ohc.ohcrop.calculator
 
-import android.content.ContentValues
 import android.content.Intent
-import android.hardware.lights.Light
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.ohc.ohcrop.R
+import com.ohc.ohcrop.calculator.nutrientsolution.NutrientSolutionMixing
+import com.ohc.ohcrop.calculator.watervolume.WaterVolume
+import com.ohc.ohcrop.control.RecyclerControlAdapter
 import com.ohc.ohcrop.control.fan.FanControl
 import com.ohc.ohcrop.control.irrigation.IrrigationControl
 import com.ohc.ohcrop.control.light.LightControl
 import com.ohc.ohcrop.control.misting.MistingControl
-import com.ohc.ohcrop.howto.appnavigation.AppNavigation
-import com.ohc.ohcrop.howto.monitorandcontrol.MonitoringAndControl
-import com.ohc.ohcrop.howto.monitoringsensors.MonitoringSensors
-import com.ohc.ohcrop.utils.FirebaseUtils
 import com.ohc.ohcrop.control.watertank.WaterTankControl
-
+import com.ohc.ohcrop.utils.FirebaseUtils
 @Suppress("DEPRECATION")
-class RecyclerControlAdapter: RecyclerView.Adapter<RecyclerControlAdapter.ViewHolder>() {
+class RecyclerCalcAdapter: RecyclerView.Adapter<RecyclerCalcAdapter.ViewHolder>() {
+
     private lateinit var userID: String
-    private var title = arrayOf("Water Tank", "Misting", "Irrigation", "Fan", "Light")
-    private var details = arrayOf("Backup Refill Tank Motor", "Misting Motor Control", "Irrigation Motor Control", "Fan Motor Control", "Light Control")
-    private var images = intArrayOf(R.drawable.watertank, R.drawable.misting, R.drawable.irrigation, R.drawable.fan, R.drawable.light)
-    //private var switch = booleanArrayOf(true,true,true,true,true,true)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.control_card_layout, parent, false)
+    private var title = arrayOf("Nutrient Solution Mixing","Water Volume Calculation", "Yield Estimation")
+    private var details = arrayOf("Volume of nutrient solution with the desired concentration","Volume of water in tank size", "Estimate the potential yield of a crop")
+    private var images = intArrayOf(R.drawable.nutrientsolutionmixing, R.drawable.watervolume, R.drawable.yieldestimation)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):  ViewHolder{
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.calculator_card_layout, parent, false)
         return ViewHolder(v)
     }
 
@@ -43,7 +39,6 @@ class RecyclerControlAdapter: RecyclerView.Adapter<RecyclerControlAdapter.ViewHo
         holder.itemTitle.text = title[position]
         holder.itemDetail.text = details[position]
         holder.itemImage.setImageResource(images[position])
-        //holder.itemswitch.isChecked = switch[position]
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -71,31 +66,31 @@ class RecyclerControlAdapter: RecyclerView.Adapter<RecyclerControlAdapter.ViewHo
                     val context = itemView.context
                     when(position){
                         0 -> {
-                            val intent = Intent(context, WaterTankControl::class.java)
+                            val intent = Intent(context, NutrientSolutionMixing::class.java)
                             context.startActivity(intent)
                         }
                         1 -> {
-                            val intent = Intent(context, MistingControl::class.java)
+                            val intent = Intent(context, WaterVolume::class.java)
                             context.startActivity(intent)
                         }
                         2 -> {
-                            val intent = Intent(context, IrrigationControl::class.java)
-                            context.startActivity(intent)
+//                            val intent = Intent(context, IrrigationControl::class.java)
+//                            context.startActivity(intent)
                         }
                         3 -> {
-                            val intent = Intent(context, FanControl::class.java)
-                            context.startActivity(intent)
+//                            val intent = Intent(context, FanControl::class.java)
+//                            context.startActivity(intent)
                         }
                         4 -> {
-                            val intent = Intent(context, LightControl::class.java)
-                            context.startActivity(intent)
+//                            val intent = Intent(context, LightControl::class.java)
+//                            context.startActivity(intent)
                         }
                         else -> {
 
                         }
                     }
                 }
-                Toast.makeText(itemView.context, "you clicked " + "${position}", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(itemView.context, "you clicked " + "${position}", Toast.LENGTH_SHORT).show()
             }
 
         }

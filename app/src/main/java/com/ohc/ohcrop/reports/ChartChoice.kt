@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.ohc.ohcrop.Dashboard
 import com.ohc.ohcrop.R
 import com.ohc.ohcrop.Reports
+import com.ohc.ohcrop.reports.datareports.DataReports
 
 class ChartChoice : AppCompatActivity() {
     private lateinit var backButton : ImageButton
@@ -41,8 +42,8 @@ class ChartChoice : AppCompatActivity() {
 
 
         barcharbtn.setOnClickListener {
-            val intent = Intent(this, BarChart::class.java)
-            intent.putExtra("reports",passedreports)
+            val intent = Intent(this, DataReports::class.java)
+            //intent.putExtra("reports",passedreports)
             this.startActivity(intent)
         }
 
