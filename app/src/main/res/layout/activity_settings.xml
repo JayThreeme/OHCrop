@@ -96,11 +96,50 @@
                     android:padding="10dp">
 
                     <TextView
+                        android:id="@+id/textView55678"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Application"
+                        android:textAlignment="center"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textviewdescription5674567"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Ohcrop Application Settings"
+                        android:textAlignment="center"
+                        android:textSize="12dp" />
+                    <TextView
+                        android:id="@+id/textviewdescription567456"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Under Construction"
+                        android:textAlignment="center"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/control_drawable_card"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
                         android:id="@+id/textView55"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Device"
+                        android:text="Hardware Device"
                         android:textAlignment="center"
                         android:textSize="18dp"
                         android:textStyle="bold" />
@@ -111,19 +150,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
-                        android:text="Ohcrop Device Settings"
+                        android:text="Ohcrop Hardware Device Settings"
                         android:textAlignment="center"
                         android:textSize="12dp" />
 
-                    <Button
-                        android:id="@+id/showButton_WeekMonth"
+                    <TextView
+                        android:id="@+id/textviewdescription3466"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:background="@drawable/login_buttonlogin_style"
-                        android:text="Show."
-                        android:textColor="@color/white" />
+                        android:padding="10dp"
+                        android:text="Under Construction"
+                        android:textAlignment="center"
+                        android:textSize="12dp" />
 
                 </LinearLayout>
 

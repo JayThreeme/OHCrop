@@ -89,6 +89,11 @@ class LightControl : AppCompatActivity() {
         manualcontrolswitch.isChecked = false
         manualcontrolswitch.setOnClickListener {
             manualswitchfun()
+            if(manualcontrolswitch.isChecked){
+                manualcontrolswitch.setText("ON")
+            }else{
+                manualcontrolswitch.setText("OFF")
+            }
         }
 
         ProfileImgButton.setOnClickListener {

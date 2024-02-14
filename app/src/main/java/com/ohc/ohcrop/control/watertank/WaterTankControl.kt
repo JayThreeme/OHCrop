@@ -99,6 +99,11 @@ class WaterTankControl : AppCompatActivity() {
         manualcontrolswitch.isChecked = false
         manualcontrolswitch.setOnClickListener {
             manualswitchfun()
+            if(manualcontrolswitch.isChecked){
+                manualcontrolswitch.setText("ON")
+            }else{
+                manualcontrolswitch.setText("OFF")
+            }
         }
 
         ProfileImgButton.setOnClickListener {
@@ -180,6 +185,7 @@ class WaterTankControl : AppCompatActivity() {
 
     private fun manualswitchfun() {
         val switchstatus = manualcontrolswitch.isChecked
+
         FirebaseUtils.firestore.collection("user").document(userID).collection("control").document("watertank").update("manualmode", switchstatus)
             .addOnSuccessListener { Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!") }
             .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writing document",e) }
@@ -190,6 +196,7 @@ class WaterTankControl : AppCompatActivity() {
             .addOnSuccessListener { Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!") }
             .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writing document",e) }
         manualcontrolswitch.isChecked = false
+
     }
 
 
