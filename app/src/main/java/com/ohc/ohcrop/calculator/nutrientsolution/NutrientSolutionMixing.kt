@@ -1,6 +1,7 @@
 package com.ohc.ohcrop.calculator.nutrientsolution
 
 import android.annotation.SuppressLint
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import com.ohc.ohcrop.Calculator
 import com.ohc.ohcrop.Dashboard
 import com.ohc.ohcrop.Profile
@@ -36,10 +38,16 @@ class NutrientSolutionMixing : AppCompatActivity() {
     private lateinit var calculate_reset_btn : Button
 
     private lateinit var calculate_nt_btn : Button
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nutrient_solution_mixing)
+
+        val enterAnimation = R.anim.slide_in_left
+        val exitAnimation = R.anim.slide_out_right
+        val options = ActivityOptions.makeCustomAnimation(this, enterAnimation, exitAnimation)
 
         ProfileImgButton = findViewById(R.id.imageBtnProfile)
         backButton = findViewById(R.id.imageBtnBack)
@@ -70,7 +78,7 @@ class NutrientSolutionMixing : AppCompatActivity() {
         }
 
         backButton.setOnClickListener {
-            startActivity(Intent(this, Calculator::class.java))
+            startActivity(Intent(this, Calculator::class.java), options.toBundle())
             finish()
         }
 
@@ -90,6 +98,23 @@ class NutrientSolutionMixing : AppCompatActivity() {
         calculate_nt_btn.setOnClickListener {
             calculate_nutrient()
         }
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@NutrientSolutionMixing, Calculator::class.java)
+                startActivity(intent, options.toBundle())
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     private fun resetfun() {

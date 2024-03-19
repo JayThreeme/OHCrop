@@ -349,7 +349,7 @@
                 android:id="@+id/textView85"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="All Rights Reserved @ 2014"
+                android:text="All Rights Reserved @ 2024"
                 android:padding="10dp"
                 android:textAlignment="center"/>
 

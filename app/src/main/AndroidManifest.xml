@@ -15,6 +15,21 @@
         android:theme="@style/Theme.OHCrop"
         tools:targetApi="31">
         <activity
+            android:name=".howto.hydroponiccrops.HydroponicCrops"
+            android:exported="false" />
+        <activity
+            android:name=".howto.hydroponicsystems.HydroponicSystems"
+            android:exported="false" />
+        <activity
+            android:name=".howto.whatishydroponic.Whatishydroponic"
+            android:exported="false" />
+        <activity
+            android:name=".AddCrops"
+            android:exported="false" />
+        <activity
+            android:name=".calculator.masterblend.Masterblend"
+            android:exported="false" />
+        <activity
             android:name=".calculator.watervolume.WaterVolume"
             android:exported="false" />
         <activity

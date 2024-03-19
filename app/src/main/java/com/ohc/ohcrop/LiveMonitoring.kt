@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ProgressBar
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
@@ -45,6 +46,9 @@ class LiveMonitoring : AppCompatActivity() {
     private var firebasedb = db.collection("user").document(getUserID).collection("monitor").document("result")
     private var previousSnapshot: DocumentSnapshot? = null
     private var initialFetchCompleted = false
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +75,22 @@ class LiveMonitoring : AppCompatActivity() {
         //------------------------------------------------------
 
         fetchDataOnce()
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@LiveMonitoring, Dashboard::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     private fun fetchDataOnce() {

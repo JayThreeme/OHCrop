@@ -1,6 +1,7 @@
 package com.ohc.ohcrop.control.irrigation
 
 import android.annotation.SuppressLint
+import android.app.ActivityOptions
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -15,8 +16,10 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.Switch
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import com.ohc.ohcrop.Control
+import com.ohc.ohcrop.Dashboard
 import com.ohc.ohcrop.Profile
 import com.ohc.ohcrop.R
 import com.ohc.ohcrop.control.ControlDocumentUtils
@@ -50,10 +53,16 @@ class IrrigationControl : AppCompatActivity() {
 
     private lateinit var userID: String
     private var controlsetting by Delegates.notNull<Boolean>()
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_irrigation_control)
+
+        val enterAnimation = R.anim.slide_in_left
+        val exitAnimation = R.anim.slide_out_right
+        val options = ActivityOptions.makeCustomAnimation(this, enterAnimation, exitAnimation)
 
         userID = FirebaseUtils.firebaseAuth.currentUser!!.uid
 
@@ -107,9 +116,26 @@ class IrrigationControl : AppCompatActivity() {
 
         backButton.setOnClickListener {
             setmanualswitchfun()
-            startActivity(Intent(this, Control::class.java))
+            startActivity(Intent(this, Control::class.java), options.toBundle())
             finish()
         }
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@IrrigationControl, Control::class.java)
+                startActivity(intent, options.toBundle())
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     // automatic ------------------------------------------------------
@@ -124,7 +150,7 @@ class IrrigationControl : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                toast("item selected" + spinneritems[position])
+                //toast("item selected" + spinneritems[position])
                 spinnerFrom = spinneritems[position]
                 spinnerFromPosition = position
                 setautomaticbutton.isVisible = true
@@ -145,7 +171,7 @@ class IrrigationControl : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                toast("item selected" + spinneritems[position])
+                //toast("item selected" + spinneritems[position])
                 spinnerTo = spinneritems[position]
                 spinnerToPosition = position
                 setautomaticbutton.isVisible = true
@@ -167,7 +193,7 @@ class IrrigationControl : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                toast("item selected" + spinneritems[position])
+                //toast("item selected" + spinneritems[position])
                 spinnerDuration = spinneritems[position]
                 spinnerDurationPosition = position
                 setautomaticbutton.isVisible = true
@@ -177,6 +203,8 @@ class IrrigationControl : AppCompatActivity() {
             }
         }
     }
+
+
 
     private fun setAutomaticFun() {
         var from = arrayOf(0,7,8,9,10,11,12,13,14,15,16,17,18,19)

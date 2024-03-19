@@ -1,6 +1,7 @@
 package com.ohc.ohcrop.control.watertank
 
 import android.R.bool
+import android.app.ActivityOptions
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -15,9 +16,12 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.Switch
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import com.ohc.ohcrop.Calculator
 import com.ohc.ohcrop.Control
+import com.ohc.ohcrop.CropTracker
+import com.ohc.ohcrop.Dashboard
 import com.ohc.ohcrop.Profile
 import com.ohc.ohcrop.R
 import com.ohc.ohcrop.control.ControlDocumentUtils
@@ -43,9 +47,15 @@ class WaterTankControl : AppCompatActivity() {
     private var controlsetting by Delegates.notNull<Boolean>()
     private lateinit var waterlevelstring: String
     private var waterlevels : Int = 0
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_water_tank_control)
+
+        val enterAnimation = R.anim.slide_in_left
+        val exitAnimation = R.anim.slide_out_right
+        val options = ActivityOptions.makeCustomAnimation(this, enterAnimation, exitAnimation)
 
         userID = FirebaseUtils.firebaseAuth.currentUser!!.uid
 
@@ -70,7 +80,7 @@ class WaterTankControl : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                toast("item selected" + waterlevels[position])
+                //toast("item selected" + waterlevels[position])
                 waterlevelstring = waterlevels[position]
                 setautomaticbutton.isVisible = true
             }
@@ -114,9 +124,28 @@ class WaterTankControl : AppCompatActivity() {
 
         backButton.setOnClickListener {
             setmanualswitchfun()
-            startActivity(Intent(this, Control::class.java))
+            startActivity(Intent(this, Control::class.java), options.toBundle())
             finish()
         }
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@WaterTankControl, Control::class.java)
+                startActivity(intent, options.toBundle())
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     private fun setAutomaticFun() {

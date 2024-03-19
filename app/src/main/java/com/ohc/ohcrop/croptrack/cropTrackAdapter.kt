@@ -20,6 +20,7 @@ class cropTrackAdapter : RecyclerView.Adapter<cropTrackAdapter.ViewHolder>() {
     private val detailList: ArrayList<String> = ArrayList()
     private var isLoading = true // Add a variable to track loading state
 
+
     init {
         fetchDataFromFirestore()
     }
@@ -91,7 +92,7 @@ class cropTrackAdapter : RecyclerView.Adapter<cropTrackAdapter.ViewHolder>() {
         override fun onClick(view: View?) {
             val position: Int = absoluteAdapterPosition
             val context = itemView.context
-            Toast.makeText(context, "You clicked ${titleList[position]} at position $position", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "You clicked ${titleList[position]} at position $position", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(context, cropTrackerView::class.java)
             intent.putExtra("referenceID", refIds[position])

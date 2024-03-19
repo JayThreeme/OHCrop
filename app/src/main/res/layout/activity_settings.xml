@@ -114,15 +114,122 @@
                         android:text="Ohcrop Application Settings"
                         android:textAlignment="center"
                         android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/textView86"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:background="@color/gray"/>
+
                     <TextView
                         android:id="@+id/textviewdescription567456"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
-                        android:text="Under Construction"
+                        android:text="Dashboard"
                         android:textAlignment="center"
-                        android:textSize="12dp" />
+                        android:textSize="18dp"
+                        android:textStyle="bold"/>
+
+                    <Switch
+                        android:id="@+id/switch1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Monitor"
+                        android:textSize="16dp"
+                        android:checked="false"
+                        android:background="@drawable/background_blue2_radius"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"/>
+
+                    <Switch
+                        android:id="@+id/switch2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Control"
+                        android:textSize="16dp"
+                        android:checked="false"
+                        android:background="@drawable/background_blue2_radius"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
+
+                    <Switch
+                        android:id="@+id/switch3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Crop Track"
+                        android:textSize="16dp"
+                        android:checked="false"
+                        android:background="@drawable/background_blue2_radius"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
+
+                    <Switch
+                        android:id="@+id/switch4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Report"
+                        android:textSize="16dp"
+                        android:checked="false"
+                        android:background="@drawable/background_blue2_radius"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"/>
+
+                    <Switch
+                        android:id="@+id/switch5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Live"
+                        android:textSize="16dp"
+                        android:checked="false"
+                        android:background="@drawable/background_blue2_radius"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"/>
+
+                    <Switch
+                        android:id="@+id/switch6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Know How"
+                        android:textSize="16dp"
+                        android:checked="false"
+                        android:background="@drawable/background_blue2_radius"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
+                    <Switch
+                        android:id="@+id/switch7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Calculator"
+                        android:textSize="16dp"
+                        android:checked="false"
+                        android:background="@drawable/background_blue2_radius"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
 
                 </LinearLayout>
 
@@ -153,16 +260,72 @@
                         android:text="Ohcrop Hardware Device Settings"
                         android:textAlignment="center"
                         android:textSize="12dp" />
+                    <TextView
+                        android:id="@+id/textView87"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:background="@color/gray"/>
 
                     <TextView
-                        android:id="@+id/textviewdescription3466"
+                        android:id="@+id/hardwareinfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="10dp"
                         android:text="Under Construction"
-                        android:textAlignment="center"
-                        android:textSize="12dp" />
+                        android:textAlignment="viewStart"
+                        android:textSize="14dp"
+                        android:textStyle="normal"
+                        android:background="@drawable/background_blue2_radius"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                  />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/dashboardLogoutBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/dashboard_button_menu_style"
+                        android:drawableEnd="@drawable/baseline_logout_50"
+                        android:text="Log out"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:paddingRight="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout4564"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp">
+
+                    <Button
+                        android:id="@+id/otherbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/dashboard_button_menu_style"
+                        android:text="other"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:paddingRight="10dp"/>
 
                 </LinearLayout>
 
@@ -170,6 +333,17 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/blankTextView"
@@ -180,15 +354,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

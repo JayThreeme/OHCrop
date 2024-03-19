@@ -19,6 +19,12 @@ class Reports : AppCompatActivity() {
     private lateinit var waterlvel_btn : Button
     private lateinit var humidity_btn : Button
     private lateinit var airtemp_btn : Button
+
+    // THIS IS NOT IN USE
+    // THIS IS NOT IN USE
+    // THIS IS NOT IN USE
+    // THIS IS NOT IN USE
+    // THIS IS NOT IN USE
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reports)

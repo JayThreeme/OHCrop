@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import com.ohc.ohcrop.CropTracker
+import com.ohc.ohcrop.Dashboard
 import com.ohc.ohcrop.Profile
 import com.ohc.ohcrop.R
 import com.ohc.ohcrop.databinding.ActivityCropTrackerAddBinding
@@ -16,6 +18,8 @@ class cropTrackerView : AppCompatActivity() {
     private lateinit var binding: ActivityCropTrackerViewBinding
     private lateinit var userID: String
     private lateinit var referenceId: String
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crop_tracker_view)
@@ -41,6 +45,23 @@ class cropTrackerView : AppCompatActivity() {
         binding.deleteButton.setOnClickListener {
             deleteDocumentFirestore()
         }
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@cropTrackerView, CropTracker::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     private fun deleteDocumentFirestore() {

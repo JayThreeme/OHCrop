@@ -1,6 +1,7 @@
 package com.ohc.ohcrop.calculator.watervolume
 
 import android.annotation.SuppressLint
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +10,9 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import com.ohc.ohcrop.Calculator
+import com.ohc.ohcrop.Dashboard
 import com.ohc.ohcrop.Profile
 import com.ohc.ohcrop.R
 
@@ -27,10 +30,16 @@ class WaterVolume : AppCompatActivity() {
 
     private lateinit var calculate : Button
     private lateinit var reset : Button
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_water_volume)
+
+        val enterAnimation = R.anim.slide_in_left
+        val exitAnimation = R.anim.slide_out_right
+        val options = ActivityOptions.makeCustomAnimation(this, enterAnimation, exitAnimation)
 
         ProfileImgButton = findViewById(R.id.imageBtnProfile)
         backButton = findViewById(R.id.imageBtnBack)
@@ -72,9 +81,26 @@ class WaterVolume : AppCompatActivity() {
         }
 
         backButton.setOnClickListener {
-            startActivity(Intent(this, Calculator::class.java))
+            startActivity(Intent(this, Calculator::class.java), options.toBundle())
             finish()
         }
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@WaterVolume, Calculator::class.java)
+                startActivity(intent, options.toBundle())
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     private fun resetfun() {

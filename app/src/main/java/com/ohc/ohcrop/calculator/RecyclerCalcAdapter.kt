@@ -1,5 +1,6 @@
 package com.ohc.ohcrop.calculator
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.ohc.ohcrop.R
+import com.ohc.ohcrop.calculator.masterblend.Masterblend
 import com.ohc.ohcrop.calculator.nutrientsolution.NutrientSolutionMixing
 import com.ohc.ohcrop.calculator.watervolume.WaterVolume
 import com.ohc.ohcrop.control.RecyclerControlAdapter
@@ -22,9 +24,9 @@ import com.ohc.ohcrop.utils.FirebaseUtils
 class RecyclerCalcAdapter: RecyclerView.Adapter<RecyclerCalcAdapter.ViewHolder>() {
 
     private lateinit var userID: String
-    private var title = arrayOf("Nutrient Solution Mixing","Water Volume Calculation", "Yield Estimation")
-    private var details = arrayOf("Volume of nutrient solution with the desired concentration","Volume of water in tank size", "Estimate the potential yield of a crop")
-    private var images = intArrayOf(R.drawable.nutrientsolutionmixing, R.drawable.watervolume, R.drawable.yieldestimation)
+    private var title = arrayOf("Nutrient Solution Mixing","Water Volume Calculation", "Masterblend")//," Yield Estimation
+    private var details = arrayOf("Volume of nutrient solution with the desired concentration","Volume of water in tank size", "Calculate Masterblend Mixing Formula")//, "Calculate Yield"
+    private var images = intArrayOf(R.drawable.nutrientsolutionmixing, R.drawable.watervolume, R.drawable.paper_bag, R.drawable.yieldestimation)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):  ViewHolder{
         val v = LayoutInflater.from(parent.context).inflate(R.layout.calculator_card_layout, parent, false)
@@ -64,31 +66,21 @@ class RecyclerCalcAdapter: RecyclerView.Adapter<RecyclerCalcAdapter.ViewHolder>(
 
                 if (position != RecyclerView.NO_POSITION){
                     val context = itemView.context
-                    when(position){
-                        0 -> {
-                            val intent = Intent(context, NutrientSolutionMixing::class.java)
-                            context.startActivity(intent)
-                        }
-                        1 -> {
-                            val intent = Intent(context, WaterVolume::class.java)
-                            context.startActivity(intent)
-                        }
-                        2 -> {
-//                            val intent = Intent(context, IrrigationControl::class.java)
-//                            context.startActivity(intent)
-                        }
-                        3 -> {
-//                            val intent = Intent(context, FanControl::class.java)
-//                            context.startActivity(intent)
-                        }
-                        4 -> {
-//                            val intent = Intent(context, LightControl::class.java)
-//                            context.startActivity(intent)
-                        }
-                        else -> {
-
-                        }
+                    val intent = when (position) {
+                        0 -> Intent(context, NutrientSolutionMixing::class.java)
+                        1 -> Intent(context, WaterVolume::class.java)
+                        2 -> Intent(context, Masterblend::class.java)
+                        else -> null
                     }
+
+                    intent?.let {
+                        // Apply custom animation
+                        val enterAnimation = R.anim.slide_in_right
+                        val exitAnimation = R.anim.slide_out_left
+                        val options = ActivityOptions.makeCustomAnimation(context, enterAnimation, exitAnimation)
+                        context.startActivity(it, options.toBundle())
+                    }
+
                 }
                 //Toast.makeText(itemView.context, "you clicked " + "${position}", Toast.LENGTH_SHORT).show()
             }

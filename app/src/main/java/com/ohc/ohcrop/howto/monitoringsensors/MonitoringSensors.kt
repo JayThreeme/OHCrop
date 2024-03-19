@@ -1,6 +1,7 @@
 package com.ohc.ohcrop.howto.monitoringsensors
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +9,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.media3.common.Timeline.Window
+import com.ohc.ohcrop.Dashboard
+import com.ohc.ohcrop.HowTo
 import com.ohc.ohcrop.R
 import com.ohc.ohcrop.databinding.ActivityMonitorBinding
 import com.ohc.ohcrop.databinding.ActivityMonitoringSensorsBinding
@@ -17,6 +21,8 @@ import org.w3c.dom.Text
 class MonitoringSensors : AppCompatActivity() {
 
     private lateinit var binding: ActivityMonitoringSensorsBinding
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_monitoring_sensors)
@@ -43,6 +49,22 @@ class MonitoringSensors : AppCompatActivity() {
         binding.btntempsensor.setOnClickListener{
             showCustomDialog(6)
         }
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@MonitoringSensors, HowTo::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     private fun showCustomDialog(position: Int) {
@@ -100,9 +122,6 @@ class MonitoringSensors : AppCompatActivity() {
                         "of temperature and humidity as serial data. The sensor is also factory calibrated and hence easy to interface with other microcontrollers."
             }
         }
-
-
-
 
         button.setOnClickListener{
             dialog.dismiss()

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ohc.ohcrop.calculator.RecyclerCalcAdapter
@@ -18,6 +19,8 @@ class Calculator : AppCompatActivity() {
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<RecyclerCalcAdapter.ViewHolder>? = null
     private lateinit var recyclerview: RecyclerView
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
@@ -39,14 +42,30 @@ class Calculator : AppCompatActivity() {
         //profile and back button listener
         ProfileImgButton.setOnClickListener {
             startActivity(Intent(this, Profile::class.java))
-            toast("Profile")
+            //toast("Profile")
             finish()
         }
 
         backButton.setOnClickListener {
             startActivity(Intent(this, Dashboard::class.java))
-            toast("Crop yield")
+            //toast("Crop yield")
             finish()
         }
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@Calculator, Dashboard::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 }

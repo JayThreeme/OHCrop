@@ -1,5 +1,6 @@
 package com.ohc.ohcrop.howto
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -14,42 +15,32 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.ohc.ohcrop.Profile
 import com.ohc.ohcrop.R
+import com.ohc.ohcrop.control.fan.FanControl
+import com.ohc.ohcrop.control.irrigation.IrrigationControl
+import com.ohc.ohcrop.control.light.LightControl
+import com.ohc.ohcrop.control.misting.MistingControl
+import com.ohc.ohcrop.control.watertank.WaterTankControl
 import com.ohc.ohcrop.howto.appnavigation.AppNavigation
+import com.ohc.ohcrop.howto.hydroponiccrops.HydroponicCrops
+import com.ohc.ohcrop.howto.hydroponicsystems.HydroponicSystems
 import com.ohc.ohcrop.howto.monitorandcontrol.MonitoringAndControl
 import com.ohc.ohcrop.howto.monitoringsensors.MonitoringSensors
+import com.ohc.ohcrop.howto.whatishydroponic.Whatishydroponic
 
 class CustomAdapter(private val mList: List<ItemsViewModel>, private val context: Context): RecyclerView.Adapter<CustomAdapter.ViewHolder>(){
-
-    // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // inflates the card_view_design view
-        // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.howto_card_layout, parent, false)
-
         return ViewHolder(view)
     }
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         val ItemsViewModel = mList[position]
-
         // sets the image to the imageview from our itemHolder class
         holder.imageView.setImageResource(ItemsViewModel.image)
-
         // sets the text to the textview from our itemHolder class
         holder.textView.text = ItemsViewModel.text
-
-//        holder.itemView.setOnClickListener(object :View.OnClickListener{
-//            override fun onClick(v: View?) {
-//                val activity=v!!.context as AppCompatActivity
-//                val ohCropDevice = OhCropDevice()
-//                activity.supportFragmentManager.beginTransaction().replace(R.id.howmains, ohCropDevice).addToBackStack(null).commit()
-//                //activity.findViewById<RelativeLayout>(R.id.howmains).bringToFront()
-//            }
-//        })
-
     }
 
     // Holds the views for adding it to image and text
@@ -78,18 +69,24 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, private val context
                             context.startActivity(intent)
                         }
                         3 -> {
-
+                            val intent = Intent(context, Whatishydroponic::class.java)
+                            intent.putExtra("selectedItem", position)
+                            context.startActivity(intent)
+                        }
+                        4 -> {
+                            val intent = Intent(context, HydroponicCrops::class.java)
+                            //intent.putExtra("selectedItem", position)
+                            context.startActivity(intent)
+                        }
+                        5 -> {
+                            val intent = Intent(context, HydroponicSystems::class.java)
+                            //intent.putExtra("selectedItem", position)
+                            context.startActivity(intent)
                         }
                         else -> {
 
                         }
                     }
-
-
-
-
-//                    Toast.makeText(itemView.context, "you clicked " +
-//                            "${position}", Toast.LENGTH_SHORT).show()
                 }
             }
         }

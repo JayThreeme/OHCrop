@@ -79,7 +79,7 @@ class Dashboard : AppCompatActivity() {
 
         howToButton.setOnClickListener {
             startActivity(Intent(this, HowTo::class.java))
-            //toast("How To")
+            //toast("Know How")
             finish()
         }
 

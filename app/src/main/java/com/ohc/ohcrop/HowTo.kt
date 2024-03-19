@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ohc.ohcrop.howto.CustomAdapter
@@ -16,6 +17,8 @@ class HowTo : AppCompatActivity() {
     private lateinit var backButton : ImageButton
 
     private lateinit var recyclerview: RecyclerView
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_howto)
@@ -39,22 +42,14 @@ class HowTo : AppCompatActivity() {
         data.add(ItemsViewModel(R.drawable.import_travel, "OhCrop App Navigation"))
         data.add(ItemsViewModel(R.drawable.import_hydroponic, "What is Hydroponic"))
         data.add(ItemsViewModel(R.drawable.import_lettuce, "Hydroponic Crops"))
+        data.add(ItemsViewModel(R.drawable.import_hydroponic_system, "Hydroponic Systems"))
         data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
-        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
-        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
-        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
-        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
-        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
-        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
+
 
         // This will pass the ArrayList to our Adapter
         val adapter = CustomAdapter(data, this)
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
-
-
-
-
 
         ProfileImgButton.setOnClickListener {
             startActivity(Intent(this, Profile::class.java))
@@ -64,5 +59,22 @@ class HowTo : AppCompatActivity() {
             startActivity(Intent(this, Dashboard::class.java))
             finish()
         }
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@HowTo, Dashboard::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 }

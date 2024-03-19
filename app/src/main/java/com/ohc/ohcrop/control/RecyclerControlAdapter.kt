@@ -1,5 +1,6 @@
 package com.ohc.ohcrop.control
 
+import android.app.ActivityOptions
 import android.content.ContentValues
 import android.content.Intent
 import android.hardware.lights.Light
@@ -59,43 +60,35 @@ class RecyclerControlAdapter: RecyclerView.Adapter<RecyclerControlAdapter.ViewHo
             //itemswitch = itemView.findViewById(R.id.item_switch)
             userID = FirebaseUtils.firebaseAuth.currentUser!!.uid
 
+
             itemView.setOnClickListener{
                 val position: Int = adapterPosition
-                Toast.makeText(itemView.context, "you clicked ${title[position] + position.toString()}", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(itemView.context, "you clicked ${title[position] + position.toString()}", Toast.LENGTH_SHORT).show()
             }
 
             itemView.setOnClickListener {
                 val position: Int = absoluteAdapterPosition
 
-                if (position != RecyclerView.NO_POSITION){
+                if (position != RecyclerView.NO_POSITION) {
                     val context = itemView.context
-                    when(position){
-                        0 -> {
-                            val intent = Intent(context, WaterTankControl::class.java)
-                            context.startActivity(intent)
-                        }
-                        1 -> {
-                            val intent = Intent(context, MistingControl::class.java)
-                            context.startActivity(intent)
-                        }
-                        2 -> {
-                            val intent = Intent(context, IrrigationControl::class.java)
-                            context.startActivity(intent)
-                        }
-                        3 -> {
-                            val intent = Intent(context, FanControl::class.java)
-                            context.startActivity(intent)
-                        }
-                        4 -> {
-                            val intent = Intent(context, LightControl::class.java)
-                            context.startActivity(intent)
-                        }
-                        else -> {
-
-                        }
+                    val intent = when (position) {
+                        0 -> Intent(context, WaterTankControl::class.java)
+                        1 -> Intent(context, MistingControl::class.java)
+                        2 -> Intent(context, IrrigationControl::class.java)
+                        3 -> Intent(context, FanControl::class.java)
+                        4 -> Intent(context, LightControl::class.java)
+                        else -> null
                     }
+
+                    intent?.let {
+                        // Apply custom animation
+                        val enterAnimation = R.anim.slide_in_right
+                        val exitAnimation = R.anim.slide_out_left
+                        val options = ActivityOptions.makeCustomAnimation(context, enterAnimation, exitAnimation)
+                        context.startActivity(it, options.toBundle())
                 }
-                Toast.makeText(itemView.context, "you clicked " + "${position}", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(itemView.context, "you clicked " + "${position}", Toast.LENGTH_SHORT).show()
+                }
             }
 
         }

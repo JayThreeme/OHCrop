@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import com.ohc.ohcrop.CropTracker
 import com.ohc.ohcrop.Dashboard
@@ -51,6 +52,8 @@ class cropTrackerAdd : AppCompatActivity() {
     private var transplantendDate: String = ""
     private var newDate: String = ""
 
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crop_tracker_add)
@@ -88,6 +91,23 @@ class cropTrackerAdd : AppCompatActivity() {
         typeofplant()
         sowingSpinner()
         transplantSpinner()
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@cropTrackerAdd, CropTracker::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     private fun setTransplantDatefun() {

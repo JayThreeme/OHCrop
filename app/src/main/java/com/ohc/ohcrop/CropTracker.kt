@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ProgressBar
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ohc.ohcrop.calculator.RecyclerCalcAdapter
@@ -25,6 +26,7 @@ class CropTracker : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private var adapter: cropTrackAdapter? = null
 
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +64,23 @@ class CropTracker : AppCompatActivity() {
 
         // Perform data fetching
         fetchDataFromFirestore()
+
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@CropTracker, Dashboard::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     private fun fetchDataFromFirestore() {

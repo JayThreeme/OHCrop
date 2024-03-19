@@ -18,6 +18,7 @@ import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.github.mikephil.charting.charts.BarChart
@@ -101,8 +102,9 @@ class DataReports : AppCompatActivity() {
     private  var selectedWeek: Int = 0
     private  var selectedYear: Int = 0
 
-
     private lateinit var TestText: TextView
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -223,8 +225,22 @@ class DataReports : AppCompatActivity() {
             showButtonfun()
         }
 
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event
+                val intent = Intent(this@DataReports, Dashboard::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove callback when activity is destroyed
+        onBackPressedCallback.remove()
     }
 
     fun getFirebaseWeekMonth(dates: List<String>) {
