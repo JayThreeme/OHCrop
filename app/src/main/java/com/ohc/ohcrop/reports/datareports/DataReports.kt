@@ -330,28 +330,57 @@ class DataReports : AppCompatActivity() {
 
     }
 
+//    fun populateDaysOfTheWeek() {
+//        val calendar = Calendar.getInstance()
+//        val currentMonth = calendar.get(Calendar.MONTH) + 1
+//        val currentYear = calendar.get(Calendar.YEAR)
+//        daysOfTheWeek.clear()
+//        datesOfTheWeek.clear()
+//
+//        calendar.set(Calendar.DAY_OF_MONTH, 1)
+//
+//        while (calendar.get(Calendar.MONTH) == currentMonth - 1 && calendar.get(Calendar.WEEK_OF_MONTH) < selectedWeek) {
+//            calendar.add(Calendar.DAY_OF_MONTH, 1)
+//        }
+//
+//        while (calendar.get(Calendar.MONTH) == currentMonth - 1 && calendar.get(Calendar.WEEK_OF_MONTH) == selectedWeek) {
+//            val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
+//            daysOfTheWeek.add(dayOfMonth)
+//            val monthString = (currentMonth).toString().padStart(2, '0')
+//            val dayString = dayOfMonth.toString().padStart(2, '0')
+//            datesOfTheWeek.add("$currentYear-$monthString-$dayString")
+//            calendar.add(Calendar.DAY_OF_MONTH, 1)
+//        }
+//    }
+
     fun populateDaysOfTheWeek() {
         val calendar = Calendar.getInstance()
-        val currentMonth = calendar.get(Calendar.MONTH) + 1
+        val currentMonth = calendar.get(Calendar.MONTH)
         val currentYear = calendar.get(Calendar.YEAR)
         daysOfTheWeek.clear()
         datesOfTheWeek.clear()
 
+        // Set the calendar to the first day of the selected month
         calendar.set(Calendar.DAY_OF_MONTH, 1)
+        calendar.set(Calendar.MONTH, selectedMonth - 1) // Months are 0-indexed
+        calendar.set(Calendar.YEAR, currentYear)
 
-        while (calendar.get(Calendar.MONTH) == currentMonth - 1 && calendar.get(Calendar.WEEK_OF_MONTH) < selectedWeek) {
+        // Move to the selected week
+        while (calendar.get(Calendar.WEEK_OF_MONTH) < selectedWeek) {
             calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
 
-        while (calendar.get(Calendar.MONTH) == currentMonth - 1 && calendar.get(Calendar.WEEK_OF_MONTH) == selectedWeek) {
+        // Collect the days of the selected week
+        while (calendar.get(Calendar.MONTH) == selectedMonth - 1 && calendar.get(Calendar.WEEK_OF_MONTH) == selectedWeek) {
             val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
             daysOfTheWeek.add(dayOfMonth)
-            val monthString = (currentMonth).toString().padStart(2, '0')
+            val monthString = (selectedMonth).toString().padStart(2, '0')
             val dayString = dayOfMonth.toString().padStart(2, '0')
             datesOfTheWeek.add("$currentYear-$monthString-$dayString")
             calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
     }
+
 
     private fun populateDaysOfTheMonth() {
         val calendar = Calendar.getInstance()
@@ -376,8 +405,6 @@ class DataReports : AppCompatActivity() {
         //toast((selectedMonth - 1).toString())
     }
     private fun spinnerweekfun() {
-
-
         var week = arrayOf(0,1,2,3,4, 5)
         val spinneritems = arrayOf("none", "Week 1", "Week 2", "Week 3", "Week 4", "Week 5")
         val arraySpinner = ArrayAdapter(this@DataReports, android.R.layout.simple_spinner_dropdown_item, spinneritems)

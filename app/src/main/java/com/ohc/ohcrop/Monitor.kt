@@ -7,6 +7,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -14,6 +15,7 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
@@ -110,6 +112,7 @@ class Monitor : AppCompatActivity() {
     private fun databaseListener() {
         database = FirebaseDatabase.getInstance().getReference()
         val postListener = object : ValueEventListener {
+            @RequiresApi(Build.VERSION_CODES.GINGERBREAD)
             override fun onDataChange(snapshot: DataSnapshot) {
                 val watertemp = snapshot.child("$userID/Monitor/watertemp").value
                 val waterlevel = snapshot.child("$userID/Monitor/water").value

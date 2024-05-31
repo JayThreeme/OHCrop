@@ -43,7 +43,7 @@ class HowTo : AppCompatActivity() {
         data.add(ItemsViewModel(R.drawable.import_hydroponic, "What is Hydroponic"))
         data.add(ItemsViewModel(R.drawable.import_lettuce, "Hydroponic Crops"))
         data.add(ItemsViewModel(R.drawable.import_hydroponic_system, "Hydroponic Systems"))
-        data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
+        //data.add(ItemsViewModel(R.drawable.howto_baseline_folder_24, "....."))
 
 
         // This will pass the ArrayList to our Adapter
