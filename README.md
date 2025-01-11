@@ -1,25 +1,24 @@
 # OHCrop
 
-**Website**: [LINK](https://wp-brewtopia.jaythree.dev/)
-  
-- Wordpress Project Only
-- Static files from this repo
+ Our Hydroponic Monitoring and Control App is designed to simplify the process of managing hydroponic systems by providing users with real-time monitoring and remote-control capabilities.
+- Capstone Project
 
+![Screenshot of Sportstxt](layout/1.png)
 
-![Screenshot of Sportstxt](layout/layout.png)
+![Screenshot of Sportstxt](layout/2.png)
 
-![Screenshot of Sportstxt](layout/mockup.png)
+![Screenshot of Sportstxt](layout/3.png)
 
 ## Contents
 
-- **Home**: Your Daily Brew, Your Perfect Escape
-- **Features**: More Than Coffee, It’s a Way of Life
-- **About**: Exceptional Coffee, Exceptional Moments.
-- **Contact**: We’d Love to Hear from You!
+- **Mobile**: Android Mobile Application
+- **Hardware**: IOT Arduino
 
 ## Tech Stack
 
-- **Wordpress**:
+- **Kotlin**:
+- **C++**:
+- **Firebase**:
 
 ## Contact
 
