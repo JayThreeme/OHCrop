@@ -3,7 +3,7 @@
  Our Hydroponic Monitoring and Control App is designed to simplify the process of managing hydroponic systems by providing users with real-time monitoring and remote-control capabilities.
 - Capstone Project
 
-**Email**: [Facebook](https://www.facebook.com/OptimizeHydroponicCrop)
+**Facebook**: [Link](https://www.facebook.com/OptimizeHydroponicCrop)
 
 ![Screenshot of Sportstxt](layout/1.png)
 
